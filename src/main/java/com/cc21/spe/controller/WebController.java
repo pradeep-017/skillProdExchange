@@ -1,10 +1,10 @@
 package com.cc21.spe.controller;
 
-import java.io.IOException;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.security.Principal;
 
 import com.cc21.spe.entity.ProdSkill;
 import com.cc21.spe.exception.ImagesUploadException;
@@ -82,7 +84,11 @@ public class WebController {
 		logger.info("Sending to InputQueue, imageName: " + imageName + ", multipartFile.getName(): "
 				+ multipartFile.getName());
 
-		prodSkill.setImageName(imageName);
+        prodSkill.setImageName(imageName);
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        prodSkill.setUserName(((Principal)auth.getPrincipal()).getName());
+
+        
 
 //				imageService.sendImageToQueue(imageName, multipartFile.getName());
 //				res =  getImageRecogResults1(imageName);
