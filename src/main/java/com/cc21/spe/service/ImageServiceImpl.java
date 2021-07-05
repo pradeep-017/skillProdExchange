@@ -41,10 +41,11 @@ public class ImageServiceImpl implements ImageService {
 		logger.info("Received multipartFile: " + multipartFile);
 		try {
 			File file = convertMultiPartFileToFile(multipartFile);
-			logger.info("Converted File: " + file);
+            logger.info("Converted File: " + file);
+            imageName = file.getName();
 			s3Service.uploadFileToS3Bucket(Constants.INPUT_S3, file);
 			logger.info("File upload is completed." + multipartFile.getName());
-			imageName = file.getName();
+			
 		} catch (final AmazonServiceException ex) {
 			logger.info("File upload is failed.");
 			logger.error("Error= {} while uploading file.", ex.getMessage());
