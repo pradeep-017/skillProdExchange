@@ -23,7 +23,7 @@
 					<br> <label for="prodSkill">Choose Category:</label><br>
 					<select name="category" id="category">
 						<option value="product">Product</option>
-						<option value="skill">Category</option>
+						<option value="skill">Skill</option>
 					</select><br>
 					<br> <label>Upload Image</label> <br> <input type="file"
 						name="image" accept="image/png, image/jpeg" /> <br>
@@ -31,8 +31,8 @@
 						value="Submit">
 
 				</form>
-				<h1 th:if="${poem}">
-				    <p th:text="${'You have successfully submitted poem titled - '+ poem?.title}"/>
+				<h1 th:if="${message}">
+				    <p th:text="${message}"/>
 				</h1>
 			</div>
 
