@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:th="http://www.thymeleaf.org"
+	layout:decorate="~{fragments/layout}">
+<body>
+	<div layout:fragment="content" th:remove="tag">
+
+
+		<div class="container">
+			
+
+			<div class="starter-template">
+				<h2>Add new Skill/Product</h2>
+
+				<form th:action="@{/addProdSkill}" th:object="${imageForm}"
+					method="post" enctype="multipart/form-data">
+
+					<label for="name">Name Item:</label><br> <input type="text"
+						id="name" name="name"><br>
+					<br> <label for="description">Description:</label><br>
+					<textarea id="description" name="description"></textarea>
+					<br>
+					<br> <label for="prodSkill">Choose Category:</label><br>
+					<select name="category" id="category">
+						<option value="product">Product</option>
+						<option value="skill">Category</option>
+					</select><br>
+					<br> <label>Upload Image</label> <br> <input type="file"
+						name="image" accept="image/png, image/jpeg" /> <br>
+					<br> <input id="submit" type="submit" tabindex="5"
+						value="Submit">
+
+				</form>
+				<h1 th:if="${poem}">
+				    <p th:text="${'You have successfully submitted poem titled - '+ poem?.title}"/>
+				</h1>
+			</div>
+
+		</div>
+		<!-- /.container -->
+	</div>
+
+</body>
+</html>

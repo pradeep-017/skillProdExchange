@@ -1,0 +1,27 @@
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<body>
+<th:block th:fragment="header">
+    <!-- this is header -->
+    <nav class="navbar navbar-inverse navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" th:href="@{/}">Spring Boot</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a th:href="@{/}">Home</a></li>
+                	<li sec:authorize="isAuthenticated()" class="active"><a th:href="@{/skillProdList}">Products/Skills List</a></li>
+                	<li sec:authorize="isAuthenticated()" class="active"><a th:href="@{/addProdSkill}">Add New Item</a></li>
+                    <li sec:authorize="isAuthenticated()" class="active"><a th:href="@{/user}">My profile</a></li>
+                	<li sec:authorize="isAuthenticated()" class="active"><a th:href="@{/logout}">Sign Out</a></li>
+	            </ul>
+            </div>
+        </div>
+    </nav>
+</th:block>
+
+</body>
+</html>
