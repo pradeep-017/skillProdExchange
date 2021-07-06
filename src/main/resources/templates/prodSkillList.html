@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{fragments/layout}">
+<body>
+<div layout:fragment="content" th:remove="tag">
+
+
+<div class="container">
+
+    <div class="starter-template">
+        <table>
+            <tr>
+                <th>Item Image</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Owner</th>
+            </tr>
+            <tr th:each>
+
+            </tr>
+        </table>
+
+
+        <h2>User profile page (Spring Security protected)</h2>
+
+        <h2 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h2>
+        
+        
+        <div>
+        	Email: [[${#httpServletRequest.remoteUser}]]@gmail.com	
+        	<br>
+        	Phone: 986738928
+        	<br>
+        	Address: 1215 Dr, Tempe
+        </div>
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Edit Profile"/>
+        </form>
+
+    </div>
+
+</div>
+<!-- /.container -->
+</div>
+
+</body>
+</html>

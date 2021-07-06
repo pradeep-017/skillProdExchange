@@ -61,7 +61,7 @@ public class WebController {
 	@GetMapping("/skillProdList")
 	public String speList() {
 
-		return "/login";
+		return "/prodSkillList";
 	}
 
 	@GetMapping("/addProdSkill")
