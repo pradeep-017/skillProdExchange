@@ -34,7 +34,7 @@ resources:
 automatic_scaling:
   target_cpu_utilization: 0.6
   min_instances: 1
-  max_instances: 5
+  max_instances: 10
   # cool_down_period_sec: 180 
   max_idle_instances: 1
 #   min_pending_latency: 30ms
