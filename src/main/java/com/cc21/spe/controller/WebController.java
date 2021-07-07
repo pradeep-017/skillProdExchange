@@ -63,7 +63,14 @@ public class WebController {
 	@GetMapping("/skillProdList")
 	public String speList() {
 
-		return "prodSkillList";
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String userName = ((Principal)auth.getPrincipal()).getName();
+        if(userName.equals("user1"))
+            return "prodSkillListForUser1";
+        else if(userName.equals("user2"))
+            return "prodSkillListForUser2";
+        
+        return "prodSkillList";
 	}
 
 	@GetMapping("/addProdSkill")
@@ -98,7 +105,41 @@ public class WebController {
 
 		model.addAttribute("message", "Added item successfully!");
 		return "addProdSkill";
-	}
+    }
+    
+
+
+    @GetMapping("/myNotification")
+	public String myNotificcation(Model model) {
+
+
+        // model.addAttribute("message", "Request sent successfully!");
+		return "myNotification";
+    }
+
+    @GetMapping("/prodSkillListUser")
+	public String getProdSkillListUser(Model model) {
+
+
+        // model.addAttribute("message", "Request sent successfully!");
+		return "prodSkillListUser";
+    }
+
+    @PostMapping("/acceptRequest")
+	public String acceptRequest(Model model) {
+
+
+        // model.addAttribute("message", "Request sent successfully!");
+		return "prodSkillListUser";
+    }
+
+    @PostMapping("/rejectRequest")
+	public String rejectRequest(Model model) {
+
+
+        // model.addAttribute("message", "Request sent successfully!");
+		return "prodSkillListUser";
+    }
 
 	@GetMapping("/403")
 	public String error403() {
