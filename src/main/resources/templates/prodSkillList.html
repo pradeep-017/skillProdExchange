@@ -2,49 +2,76 @@
 <html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns:th="http://www.thymeleaf.org"
       layout:decorate="~{fragments/layout}">
+ <head>
+<style>
+.divScroll {
+overflow:scroll;
+height:300px;
+width:400px;
+}
+</style>
+</head>
 <body>
+
 <div layout:fragment="content" th:remove="tag">
 
-
-<div class="container">
-
-    <div class="starter-template">
+    <div class="divScroll">
         <table>
             <tr>
                 <th>Item Image</th>
                 <th>Name</th>
                 <th>Category</th>
                 <th>Owner</th>
+                <th>Request</th>
             </tr>
             <tr>
-                
+            <td><img src="../static/images/fan.jpg" width="100" height="100"></td>
+             <td>Table Fan</td>
+             <td>Product</td>
+             <td>user2</td>
+             <td><button>Request</button></td>
             </tr>
-
+            <tr>
+			<td><img src="../static/images/swim.jpg" width="100" height="100"></td>
+             <td>Swimming</td>
+             <td>Skill</td>
+             <td>user2</td>
+             <td><button>Request</button></td>
+            </tr>
+            <tr>
+			<td><img src="../static/images/fan.jpg" width="100" height="100"></td>
+             <td>Table Fan</td>
+             <td>Product</td>
+             <td>user3</td>
+             <td><button>Request</button></td>
+            </tr>
+            <tr>
+			<td><img src="../static/images/cook.jpg" width="100" height="100"></td>
+             <td>Cooking</td>
+             <td>Skill</td>
+             <td>user2</td>
+             <td><button>Request</button></td>
+            </tr>
+            <tr>
+			<td><img src="../static/images/headset.jpg" width="100" height="100"></td>
+             <td>Headsets</td>
+             <td>Product</td>
+             <td>user2</td>
+             <td><button>Request</button></td>
+            </tr>
+            <tr>
+			<td><img src="../static/images/paint.jpg" width="100" height="100"></td>
+             <td>painting</td>
+             <td>Skill</td>
+             <td>user3</td>
+             <td><button>Request</button></td>
             </tr>
         </table>
 
-
-        <h2>User profile page (Spring Security protected)</h2>
-
-        <h2 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h2>
-        
-        
-        <div>
-        	Email: [[${#httpServletRequest.remoteUser}]]@gmail.com	
-        	<br>
-        	Phone: 986738928
-        	<br>
-        	Address: 1215 Dr, Tempe
-        </div>
-        <form th:action="@{/logout}" method="post">
-            <input type="submit" value="Edit Profile"/>
-        </form>
+</div>
 
     </div>
 
-</div>
-<!-- /.container -->
-</div>
 
 </body>
 </html>
