@@ -1,0 +1,42 @@
+runtime: java11
+instance_class: F4
+# [START gae_java11_helloworld_yaml]
+# runtime: java
+# env: flex
+# instance_class: F4
+
+# entrypoint: java -Xmx64m -jar target/spexchange.jar
+
+# script: this field is required, but ignored
+# handlers:
+# - url: /.*
+#   script: auto
+
+# Application Resources
+resources:
+  memory_gb: 4
+  cpu: 2
+#   memory_gb: 2
+#   disk_size_gb: 10
+#   volumes:
+#   - name: ramdisk1
+#     volume_type: tmpfs
+#     size_gb: 0.5
+# Automatic Scaling
+# automatic_scaling: 
+#   min_num_instances: 1 
+#   max_idle_instances: 1
+#   max_num_instances: 5 
+#   max_concurrent_requests: 10
+#   cool_down_period_sec: 180 
+#   target_utilization: 0.6
+
+automatic_scaling:
+  target_cpu_utilization: 0.6
+  min_instances: 1
+  max_instances: 5
+  # cool_down_period_sec: 180 
+  max_idle_instances: 1
+#   min_pending_latency: 30ms
+#   max_pending_latency: automatic
+  max_concurrent_requests: 10
