@@ -2,49 +2,58 @@
 <html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns:th="http://www.thymeleaf.org"
       layout:decorate="~{fragments/layout}">
+ <head>
+<style>
+.divScroll {
+overflow:scroll;
+height:300px;
+width:400px;
+}
+</style>
+</head>
 <body>
+
 <div layout:fragment="content" th:remove="tag">
+<br>
 
+<h1>Owner Name: <font style="color:red"> user1</font></h1>
+<b>List of Products/Skills:</b>
+<br>
+<br>
 
-<div class="container">
-
-    <div class="starter-template">
+    <div class="divScroll">
         <table>
             <tr>
                 <th>Item Image</th>
                 <th>Name</th>
                 <th>Category</th>
-                <th>Owner</th>
             </tr>
             <tr>
-                
+                <td><img src="../static/images/8T.jpg" width="100" height="100"></td>
+                <td>One plus 8T Mobile</td>
+                <td>Product</td>
             </tr>
-
+            <tr>
+                <td><img src="../static/images/ball.jpg" width="100" height="100"></td>
+                <td>Basketball</td>
+                <td>Skill</td>
+            </tr>
+            <tr>
+                <td><img src="../static/images/french.jpg" width="100" height="100"></td>
+                <td>French</td>
+                <td>Skill</td>
             </tr>
         </table>
-
-
-        <h2>User profile page (Spring Security protected)</h2>
-
-        <h2 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h2>
-        
-        
-        <div>
-        	Email: [[${#httpServletRequest.remoteUser}]]@gmail.com	
-        	<br>
-        	Phone: 986738928
-        	<br>
-        	Address: 1215 Dr, Tempe
-        </div>
-        <form th:action="@{/logout}" method="post">
-            <input type="submit" value="Edit Profile"/>
-        </form>
+</div>
+<table class="center">
+<tr>
+<th><button>Accept</button></th>
+<th><button>Decline</button></th>
+</tr>
+</table>
 
     </div>
 
-</div>
-<!-- /.container -->
-</div>
 
 </body>
 </html>

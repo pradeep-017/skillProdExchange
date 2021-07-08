@@ -11,40 +11,18 @@
     <div class="starter-template">
         <table>
             <tr>
-                <th>Item Image</th>
-                <th>Name</th>
-                <th>Category</th>
-                <th>Owner</th>
-            </tr>
-            <tr>
-                
-            </tr>
-
+                <td>Request from</td>
+                <td>user1</td>
+                <td><a href="prodSkillListUser.html"><button>View Profile</button></a></td>
             </tr>
         </table>
 
-
-        <h2>User profile page (Spring Security protected)</h2>
-
-        <h2 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h2>
-        
-        
-        <div>
-        	Email: [[${#httpServletRequest.remoteUser}]]@gmail.com	
-        	<br>
-        	Phone: 986738928
-        	<br>
-        	Address: 1215 Dr, Tempe
-        </div>
-        <form th:action="@{/logout}" method="post">
-            <input type="submit" value="Edit Profile"/>
-        </form>
 
     </div>
 
 </div>
 <!-- /.container -->
-</div>
-
+</div> <br><br><br><br>
+ <a href="prodSkillList.html">View List...</a> 
 </body>
 </html>
