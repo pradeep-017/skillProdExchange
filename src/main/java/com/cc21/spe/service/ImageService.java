@@ -8,8 +8,4 @@ public interface ImageService {
 
 	String uploadFiles(MultipartFile multipartFile) throws IOException;
 
-	void sendImageToQueue(String imageUrl, String fileName);
-
-	String getFromHashorSQS(String imageName);
-
 }

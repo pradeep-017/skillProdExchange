@@ -19,7 +19,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
-		http.csrf().disable().authorizeRequests().antMatchers("/", "/home", "/about").permitAll()
+		http.csrf().disable().authorizeRequests().antMatchers("/", "/home", "/about", "/register").permitAll()
 				.antMatchers("/admin/**").hasAnyRole("ADMIN")
 				.antMatchers("/user/**").hasAnyRole("USER").anyRequest()
                 .authenticated().and().formLogin().loginPage("/login").defaultSuccessUrl("/user", true)

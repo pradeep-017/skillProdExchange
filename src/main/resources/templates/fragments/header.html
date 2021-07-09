@@ -16,7 +16,9 @@
                 	<li sec:authorize="isAuthenticated()" class="active"><a th:href="@{/skillProdList}">Products/Skills List</a></li>
                 	<li sec:authorize="isAuthenticated()" class="active"><a th:href="@{/addProdSkill}">Add New Item</a></li>
                     <li sec:authorize="isAuthenticated()" class="active"><a th:href="@{/user}">My profile</a></li>
-                	<li sec:authorize="isAuthenticated()" class="active"><a th:href="@{/logout}">Sign Out</a></li>
+                    <li sec:authorize="isAuthenticated()" class="active"><a th:href="@{/myNotification}">My Notifications</a></li>
+                    <li sec:authorize="isAuthenticated()" class="active"><a th:href="@{/logout}">Sign Out</a></li>
+                    
 	            </ul>
             </div>
         </div>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{fragments/layout}">
+ <head>
+<style>
+.divScroll {
+overflow:scroll;
+height:300px;
+width:400px;
+}
+</style>
+</head>
+<body>
+
+<div layout:fragment="content" th:remove="tag">
+    <div class="starter-template">
+        <h2>User profile page of user1</h2>        
+        <div>
+        	Email: user1@gmail.com	
+        	<br>
+        	Phone: 986738928
+        	<br>
+        	Address: 1215 Dr, Tempe
+        </div>
+
+    </div>
+    <br>
+    <div>
+        <table class="center">
+            <tr>
+                <th>
+                    <form th:action="@{/acceptRequest}" th:object="${sendRequestForm}"
+                        method="post" enctype="multipart/form-data"> 
+                    <input type="hidden" name="userOne" id="userOne" value="user1">                    
+                    <input class="submitReq" id="submit" type="submit" tabindex="5"
+						value="Accept">
+                    </form> 
+                </th>
+                <th>
+                    <form th:action="@{/rejectRequest}" th:object="${sendRequestForm}"
+                        method="post" enctype="multipart/form-data"> 
+                    <input type="hidden" name="userOne" id="userOne" value="user1">                    
+                    <input class="submitReq" id="submit" type="submit" tabindex="5"
+						value="Reject">
+                    </form> 
+                </th>
+            <th><button>Accept</button></th>
+            <th><button>Decline</button></th>
+            </tr>
+        </table>
+        
+    </div>
+    <br>
+    <b>List of Products/Skills:</b>
+    
+    <div class="divScroll">
+        <table>
+            <tr>
+                <th>Item Image</th>
+                <th>Name</th>
+                <th>Category</th>
+            </tr>
+            <tr>
+                <td><img src="/images/8T.jpg" width="100" height="100"></td>
+                <td>One plus 8T Mobile</td>
+                <td>Product</td>
+            </tr>
+            <tr>
+                <td><img src="/images/ball.jpg" width="100" height="100"></td>
+                <td>Basketball</td>
+                <td>Skill</td>
+            </tr>
+            <tr>
+                <td><img src="/images/french.jpg" width="100" height="100"></td>
+                <td>French</td>
+                <td>Skill</td>
+            </tr>
+        </table>
+</div>
+</div>
+
+</body>
+</html>

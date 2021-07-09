@@ -1,22 +1,29 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <div th:replace="fragments/header :: header-css"/>
-</head>
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{fragments/layout}">
 <body>
+<div layout:fragment="content" th:remove="tag">
 
-<div th:replace="fragments/header :: header"/>
+
 
 <div class="container">
 
     <div class="starter-template">
-        <h1>Normal page (No need login)</h1>
+        <h1>CC Project 2 - Skills/Products Exchange</h1>
+        This is an online platform that enables a barter system for consumers who are willing to trade products 
+        instead of fiscal money. In simple terms, the users who possess goods and skills can barter it 
+        with other consumers. Let us say a user is good at playing soccer and wants to learn driving can 
+        trade his soccer skills with another user who is willing to teach driving to him. This website 
+        provides the customers with a platform to display, share and acquire the goods and services, 
+        unlike the existing online platforms that only provide buying and selling products and services. 
     </div>
+
 
 </div>
 <!-- /.container -->
 
-<div th:replace="fragments/footer :: footer"/>
+
 
 </body>
 </html>

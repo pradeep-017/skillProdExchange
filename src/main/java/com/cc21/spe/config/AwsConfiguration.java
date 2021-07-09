@@ -4,10 +4,6 @@ import org.springframework.context.annotation.Configuration;
 
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
-import com.amazonaws.services.ec2.AmazonEC2;
-import com.amazonaws.services.ec2.AmazonEC2ClientBuilder;
-import com.amazonaws.services.sqs.AmazonSQS;
-import com.amazonaws.services.sqs.AmazonSQSClientBuilder;
 import com.cc21.spe.constants.Constants;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
@@ -25,22 +21,6 @@ public class AwsConfiguration {
 				.withRegion(Constants.AWS_REGION)
 				.build();
 		return awsS3Client;
-	}
-
-	public AmazonSQS awsSQS() {
-		AmazonSQS awsSQSClient = AmazonSQSClientBuilder.standard()
-				.withCredentials(new AWSStaticCredentialsProvider(basicAWSCredentials()))
-				.withRegion(Constants.AWS_REGION)
-				.build();
-		return awsSQSClient;
-	}
-
-	public AmazonEC2 awsEC2() {
-		AmazonEC2 awsEC2 = AmazonEC2ClientBuilder.standard()
-				.withCredentials(new AWSStaticCredentialsProvider(basicAWSCredentials()))
-				.withRegion(Constants.AWS_REGION)
-				.build();
-		return awsEC2;
 	}
 
 }

@@ -20,7 +20,7 @@ import com.cc21.spe.constants.Constants;
 @Repository
 public class S3RepoImpl implements S3Repo {
 
-	private static final Logger logger = LoggerFactory.getLogger(Ec2RepoImpl.class);
+	private static final Logger logger = LoggerFactory.getLogger(S3RepoImpl.class);
 
 	@Autowired
 	private AwsConfiguration awsConfiguration;
