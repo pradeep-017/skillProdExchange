@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{fragments/layout}">
+ <head>
+<style>
+.divScroll {
+overflow:scroll;
+height:300px;
+width:400px;
+}
+</style>
+</head>
+<body>
+
+<div layout:fragment="content" th:remove="tag">
+    
+    <form th:action="@{/myMessage}" method="post" name="sendMessageForm" id="sendMessageForm">
+						
+							<div class="form-group">
+								<table>
+									<tr>
+										<td><label for="title" class="col-form-label">Title:</label>
+										</td>
+										<td><input type="text" class="form-control"
+											id="title" name="title" /></td>
+									</tr>
+								</table>
+							</div>
+							<div class="form-group">
+								<table>
+									<tr>
+										<td><label for="name" class="col-form-label">Message:</label>
+										</td>
+										<td><textarea id="message" name="message" class="form-control"></textarea></td>
+									</tr>
+                                </table>
+                            </div>
+                            <div class="form-group">
+                                <input type="hidden" name="userTwo" id="userTwo" value="user1">
+                            </div>
+						
+						
+                            
+                            <br> <input id="submit" type="submit" tabindex="5"
+                        value="Submit">
+                        <button id="cancelSubmitMessage" type="reset" class="btn light">Cancel</button>
+							
+						
+					</form>
+
+</div>
+
+</body>
+</html>

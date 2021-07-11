@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{fragments/layout}">
+<head>
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
+    <script>
+        $(document).ready(function() {
+            $(document).on("click", ".addMessage", function(e) {
+                $("#addMessageAlert").show();
+                var alert = $('<input type="hidden" id="toUserName">');
+                $(alert).attr( 'value', 'user1');
+                $('.modal-footer').append(alert); 
+            });
+
+
+            $("#cancelSubmitMessage").click(function() {
+                $("#addMessageAlert").hide();	
+            });
+    
+        });
+    </script>
+</head>
+<body>
+<div layout:fragment="content" th:remove="tag">
+
+
+<div class="container">
+    <div>
+        <h3>Messages:</h3>
+    </div>
+    <div class="divScroll">
+        <table>
+            <tr th:each="msg: ${msgList}">
+                Message from 
+                [[${msg.userOne}]] <br>
+                <td>title: [[${msg.title}]], </td>
+                <td>message: [[${msg.message}]]</td><br>
+                <a th:href="@{/respondUser2}"><button>Respond</button></a>
+            </tr>
+            <tr>
+                
+            </tr>
+        </table>
+    </div>
+
+</div>
+
+</div> <br><br><br><br>
+ <a href="/skillProdList">View List...</a> 
+</body>
+</html>

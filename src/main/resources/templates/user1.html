@@ -2,6 +2,11 @@
 <html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns:th="http://www.thymeleaf.org"
       layout:decorate="~{fragments/layout}">
+<script>
+    function hideItem() {  
+        document.getElementById("toHide").style.visibility = "hidden";   
+    }
+</script>
 <body>
 <div layout:fragment="content" th:remove="tag">
 
@@ -36,21 +41,37 @@
                 <th>Item Image</th>
                 <th>Name</th>
                 <th>Category</th>
+                <th></th>
+                <th></th>
             </tr>
-            <tr>
+            <tr id="toHide">
                 <td><img src="/images/8T.jpg" width="100" height="100"></td>
                 <td>One plus 8T Mobile</td>
                 <td>Product</td>
+                <td><button>Update</button></td>
+                <td><button type="button" onclick="document.getElementById('toHide').remove()">Delete</button></td>
+                <!-- <td><input type="button" id="deleteItem" th:onclick="hideItem()" value="Delete"></input></td> -->
             </tr>
             <tr>
                 <td><img src="/images/ball.jpg" width="100" height="100"></td>
                 <td>Basketball</td>
                 <td>Skill</td>
+                <td><button>Update</button></td>
+                <td><button>Delete</button></td>
             </tr>
             <tr>
                 <td><img src="/images/french.jpg" width="100" height="100"></td>
                 <td>French</td>
                 <td>Skill</td>
+                <td><button>Update</button></td>
+                <td><button>Delete</button></td>
+            </tr>
+            <tr>
+                <td><img src="/images/iwatch.jpg" width="100" height="100"></td>
+                <td>iwatch</td>
+                <td>Product</td>
+                <td><button>Update</button></td>
+                <td><button>Delete</button></td>
             </tr>
         </table>
     </div>

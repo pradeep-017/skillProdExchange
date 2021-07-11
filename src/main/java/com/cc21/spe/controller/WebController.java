@@ -23,10 +23,12 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.security.Principal;
 import java.util.List;
 
+import com.cc21.spe.entity.MessageUser;
 import com.cc21.spe.entity.PSRequest;
 import com.cc21.spe.entity.ProdSkill;
 import com.cc21.spe.exception.ImagesUploadException;
 import com.cc21.spe.service.ImageService;
+import com.cc21.spe.service.MessageUserService;
 import com.cc21.spe.service.PSRequestService;
 
 @Controller
@@ -39,6 +41,9 @@ public class WebController {
     
     @Autowired
     private PSRequestService psRequestService;
+
+    @Autowired
+    private MessageUserService messageService;
 
     @GetMapping("/")
 	public String home1() {
@@ -129,7 +134,7 @@ public class WebController {
 
         prodSkill.setImageName(imageName);
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        prodSkill.setUserName(((Principal)auth.getPrincipal()).getName());
+        prodSkill.setUserName(auth.getName());
 
 //				imageService.sendImageToQueue(imageName, multipartFile.getName());
 //				res =  getImageRecogResults1(imageName);
@@ -140,7 +145,7 @@ public class WebController {
     }
     
     @PostMapping("/sendRequest")
-	public ResponseEntity<String> sendRequest(Model model,  @ModelAttribute PSRequest psRequest) {
+	public String sendRequest(Model model,  @ModelAttribute PSRequest psRequest) {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String userOne = auth.getName();
@@ -151,9 +156,10 @@ public class WebController {
 
         String msg = String.format( " You have successfully sent request to '%s' ",
             psRequest.getUserTwo());
-        // model.addAttribute("message", "Request sent successfully!");
+        model.addAttribute("msg", msg);
         // ObjectMapper mapper = new ObjectMapper();
-        return new ResponseEntity<>(msg, HttpStatus.OK);
+        // return new ResponseEntity<>(msg, HttpStatus.OK);
+        return "successPage";
     }
 
 
@@ -170,12 +176,54 @@ public class WebController {
 		return "myNotification";
     }
 
+    @GetMapping("/myMessage")
+	public String myMessage(Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String user = auth.getName();
+
+        List<MessageUser> msgList = messageService.getMessages(user);
+        model.addAttribute("msgList", msgList);
+        
+		return "myMessage";
+    }
+
+    @PostMapping("/myMessage")
+	public String myMessagePost(Model model, @ModelAttribute MessageUser msgUser) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String user = auth.getName();
+
+        msgUser.setUserOne(user);
+        messageService.createMessage(msgUser);
+        
+         String msg = String.format( " You have successfully sent message to '%s' ",
+            msgUser.getUserTwo());
+        model.addAttribute("msg", msg);
+        // return new ResponseEntity<>(msg, HttpStatus.OK);
+        return "successPage";
+    }
+
     @GetMapping("/prodSkillListOfUser")
 	public String getProdSkillListUser(Model model, @RequestParam("user") String userName) {
 
         // model.addAttribute("message", "Request sent successfully!");
 		return "prodSkillListUser1";
     }
+
+    @GetMapping("/messageUser")
+    public String messageUser(Model model, @RequestParam("user") String userName) {
+
+        // model.addAttribute("message", "Request sent successfully!");
+		return "messageUser1";
+    }
+
+    @GetMapping("/respondUser2")
+    public String respondUser(Model model) {
+
+        // model.addAttribute("message", "Request sent successfully!");
+		return "messageUser2";
+    }
+
+    
 
     @PostMapping("/acceptRequest")
 	public String acceptRequest(Model model, @ModelAttribute PSRequest psRequest) {

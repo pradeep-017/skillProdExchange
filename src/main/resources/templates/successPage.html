@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{fragments/layout}">
+<body>
+<div layout:fragment="content" th:remove="tag">
+
+<div class="container">
+
+    <h3 th:if="${msg}">
+		<p th:text="${msg}"/>
+    </h3>
+
+
+</div>
+<!-- /.container -->
+
+
+
+</body>
+</html>
