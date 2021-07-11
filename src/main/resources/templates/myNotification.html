@@ -47,7 +47,7 @@
     <div class="divScroll">
         <table>
             <tr th:each="acpt: ${acptList}">
-                <td>Request from 
+                <td>Connection with  
                 [[${acpt.userOne}]]</td>
                 <td><a th:href="@{'/prodSkillListOfUser?user=' + ${acpt.userOne}}"><button>View Profile</button></a></td>
                 <td><a th:href="@{'/messageUser?user=' + ${acpt.userOne}}"><button>Message</button></a></td>
